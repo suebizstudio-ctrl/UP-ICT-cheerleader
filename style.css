@@ -1,9 +1,17 @@
 /* ===== BASE ===== */
 body {
     margin: 0;
-    font-family: 'Anuphan', 'Sarabun', sans-serif;
-    background: #ede9d9;
+    font-family: sans-serif;
+    background-color: rgb(255, 252, 222);
 }
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    padding: 16px;
+}
+
 
 /* ===== TOP HEADER (GOLD GLASS) ===== */
 .top-header {
@@ -214,6 +222,7 @@ body {
     letter-spacing: 1px;
     color: #333;
 }
+
 /* ===== Activity Section ===== */
 .activity-section {
     max-width: 1200px;
@@ -230,18 +239,18 @@ body {
 
 /* Card */
 .activity-card {
-    background: rgba(255,255,255,0.85);
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(6px);
     border-radius: 18px;
     overflow: hidden;
 
-    box-shadow: 0 10px 28px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .activity-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 14px 34px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
 }
 
 /* Image */
@@ -263,6 +272,7 @@ body {
     color: #8a6d3b;
     letter-spacing: 1px;
 }
+
 .activity-card img {
     width: 100%;
     aspect-ratio: 16 / 9;
@@ -275,19 +285,37 @@ body {
     line-height: 1.6;
 }
 
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    padding: 16px;
+}
+
+.box {
+    display: flex;
+    gap: 20px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
-    .hero {
-        margin-top: 110px;
+    .box {
+        flex-direction: column;
     }
 
-    .hero-overlay {
-        padding: 60px 25px;
+    h1 {
+        font-size: 24px;
     }
+}
 
-    .top-logo {
-        height: 56px;
-        /* Mobile */
+@media (min-width: 1200px) {
+    h1 {
+        font-size: 48px;
     }
 }
