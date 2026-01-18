@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <title>สมัครสำเร็จ | ICT CHEERLEADER UP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="photo/logo2.png" type="image/x-icon">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="success.css">
+</head>
+
+<body>
+    <div class="success-box">
+        <img src="photo/IMG_5501.PNG" alt="ICT Cheerleader Logo">
+
+        <h1>WELCOME</h1>
+
+        <p>
+            ยินดีต้อนรับ <strong id="userName"></strong><br>
+            การสมัครของคุณถูกส่งเรียบร้อยแล้ว
+        </p>
+
+        <p>
+            สมัครผู้นำเชียร์คณะ ICT สำเร็จแล้ว<br>
+            รอติดตามข่าวสารเร็ว ๆ นี้
+        </p>
+
+        <a href="index.html" class="btn-back">กลับหน้าแรก</a>
+    </div>
+
+    <script>
+        // ดึงชื่อจาก localStorage
+        const name = localStorage.getItem("ict_fullname");
+        const nameBox = document.getElementById("userName");
+
+        if (name) {
+            nameBox.innerText = name;
+        } else {
+            // กันเข้าหน้านี้ตรง ๆ
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+
+</html>

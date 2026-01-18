@@ -675,3 +675,173 @@ img {
         letter-spacing: 2px;
     }
 }
+
+/* =========================
+   LEADER SIZE LOCK (GEN 14 STANDARD)
+========================= */
+
+/* ขนาดมาตรฐาน = รุ่น 14 */
+.leader-card {
+    width: 220px;
+    /* ← ขนาดเดียวกับรุ่น 14 */
+    min-width: 220px;
+    max-width: 220px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, .92);
+}
+
+/* รูปล็อคสัดส่วน */
+.leader-card img {
+    width: 100%;
+    height: 280px;
+    /* ← ความสูงเดียวกับรุ่น 14 */
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* ข้อความใต้รูป */
+.leader-card p {
+    font-size: 14px;
+    margin: 10px 0 14px;
+    color: #555;
+}
+
+/* =========================
+   SINGLE MEMBER CENTER FIX
+   (GEN 11–12)
+========================= */
+
+/* ถ้ามีการ์ดแค่ 1 ใบ → จัดกลาง แต่ไม่เปลี่ยนขนาด */
+.leader-scroll:has(.leader-card:only-child) {
+    justify-content: center;
+}
+
+/* =========================
+   RESPONSIVE = เท่ารุ่น 14 ทุกจอ
+========================= */
+
+/* Tablet */
+@media (max-width: 768px) {
+    .leader-card {
+        width: 200px;
+        min-width: 200px;
+        max-width: 200px;
+    }
+
+    .leader-card img {
+        height: 260px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .leader-card {
+        width: 180px;
+        min-width: 180px;
+        max-width: 180px;
+    }
+
+    .leader-card img {
+        height: 230px;
+    }
+}
+
+/* Extra small */
+@media (max-width: 360px) {
+    .leader-card {
+        width: 170px;
+        min-width: 170px;
+        max-width: 170px;
+    }
+
+    .leader-card img {
+        height: 210px;
+    }
+}
+
+/* =========================
+   LEADER SCROLL (LUXURY)
+========================= */
+
+.leader-scroll {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 10px 6px 18px;
+    scroll-behavior: smooth;
+
+    /* ซ่อน scrollbar บาง browser */
+    scrollbar-width: thin;
+    scrollbar-color: #d4af37 transparent;
+}
+
+/* Chrome / Edge / Safari */
+.leader-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.leader-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.leader-scroll::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #f5d27a, #d4af37);
+    border-radius: 999px;
+}
+
+/* Hover effect */
+.leader-scroll::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #ffd97a, #b8962e);
+}
+
+/* =========================
+   TOUCH & MOBILE FEEL
+========================= */
+
+.leader-scroll {
+    -webkit-overflow-scrolling: touch;
+    scroll-padding-left: 18px;
+}
+
+/* เวลาการ์ดอยู่ชิดขอบ ให้หายใจ */
+.leader-card {
+    flex-shrink: 0;
+}
+
+/* =========================
+   LEADER CARD INTERACTION
+========================= */
+
+.leader-card {
+    transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.leader-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, .25);
+}
+
+/* =========================
+   TABLET / IPAD
+========================= */
+
+@media (max-width: 1024px) {
+    .leader-scroll {
+        gap: 16px;
+        padding-bottom: 16px;
+    }
+}
+
+/* =========================
+   MOBILE LEADER SCROLL
+========================= */
+
+@media (max-width: 480px) {
+    .leader-scroll {
+        gap: 14px;
+        padding-bottom: 14px;
+    }
+}
