@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheerleader Registration</title>
+    <link rel="stylesheet" href="ApplyForMembership.css">
+</head>
+
+<body>
+    <div class="form-container-minimal">
+        <form
+            action="https://script.google.com/macros/s/AKfycbxT3vcXxigxLRaVNQBGJDk0-3nQRDNeDrbynIEUnea3cerf60UMriNNwRTthxsbq1US/exec"
+            method="POST" class="modern-form" id="regForm">
+            <h2 class="form-header">Cheerleader Registration</h2>
+            <p class="form-description">แบบฟอร์มสมัครคัดเลือกผู้นำเชียร์ คณะ ICT</p>
+
+            <div class="field-row">
+                <div class="field-wrapper">
+                    <label>First & Last Name</label>
+                    <input type="text" name="fullname" placeholder="ชื่อ - นามสกุล" required>
+                </div>
+                <div class="field-wrapper">
+                    <label>Nickname</label>
+                    <input type="text" name="nickname" placeholder="ชื่อเล่น" required>
+                </div>
+            </div>
+
+            <div class="field-wrapper">
+                <label>Student ID</label>
+                <input type="text" name="student_id" placeholder="รหัสนิสิต" required>
+            </div>
+
+            <div class="field-wrapper">
+                <label>Contact (Line / IG / Tel)</label>
+                <input type="text" name="contact" placeholder="ช่องทางติดต่อ" required>
+            </div>
+
+            <div class="field-wrapper">
+                <label>Why do you want to join?</label>
+                <textarea name="reason" placeholder="เหตุผลที่ต้องการเป็นผู้นำเชียร์..." rows="3" required></textarea>
+            </div>
+
+            <div class="field-wrapper">
+                <label>Portrait Photo</label>
+                <div class="file-input-wrapper">
+                    <input type="file" id="photo" accept="image/*" required>
+                    <span class="file-custom" id="fileName">แนบรูปภาพถ่ายหน้าตรง</span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-modern" id="submitBtn">SUBMIT APPLICATION</button>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('regForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const fileInput = document.getElementById('photo');
+
+        // แสดงชื่อไฟล์เมื่อเลือกรูป
+        fileInput.addEventListener('change', function () {
+            document.getElementById('fileName').innerText = this.files[0].name;
+        });
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            submitBtn.disabled = true;
+            submitBtn.innerText = "UPLOADING...";
+
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function () {
+                const base64Data = reader.result.split(',')[1];
+                const data = {
+                    base64: base64Data,
+                    type: file.type,
+                    name: file.name,
+                    fullname: form.fullname.value,
+                    nickname: form.nickname.value,
+                    student_id: form.student_id.value,
+                    contact: form.contact.value,
+                    reason: form.reason.value
+                };
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: JSON.stringify(data)
+                })
+                    .then(res => res.text())
+                    .then(response => {
+                        alert("สมัครสมาชิกสำเร็จ!");
+                        form.reset();
+                        document.getElementById('fileName').innerText = "แนบรูปภาพถ่ายหน้าตรง";
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = "SUBMIT APPLICATION";
+                    })
+                    .catch(err => {
+                        alert("เกิดข้อผิดพลาด กรุณาลองใหม่");
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = "SUBMIT APPLICATION";
+                    });
+            };
+            reader.readAsDataURL(file);
+        });
+    </script>
+</body>
+
+</html>
