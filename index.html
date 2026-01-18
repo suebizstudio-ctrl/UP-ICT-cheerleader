@@ -6,15 +6,69 @@
     <title>ICT CHEERLEADER UP</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
+
+    <script src="script.js" defer></script>
+
     <link rel="shortcut icon" href="photo/logo2.png" sizes="32x32" type="image/x-icon">
 </head>
 
 <body>
+    <div id="loader">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
 
-    <!-- ================= HEADER ================= -->
+        <div class="loader-content">
+            <h1 class="loader-logo">ICT CHEERLEADER</h1>
+            <div class="loader-bar"></div>
+            <p class="loader-sparkle">✧ THE NEXT LEGACY ✧</p>
+        </div>
+    </div>
+
+    <div id="registration-overlay" class="form-container-minimal" style="display: none;">
+        <form
+            action="https://script.google.com/macros/s/AKfycbxT3vcXxigxLRaVNQBGJDk0-3nQRDNeDrbynlEUnea3cerf60UMriNNwRTthxsbq1US/exec"
+            method="POST" class="modern-form" id="regForm">
+
+            <h2 class="form-header">Cheerleader Registration</h2>
+            <p class="form-description">แบบฟอร์มสมัครคัดเลือกผู้นำเชียร์ คณะ ICT</p>
+
+            <div class="field-row">
+                <div class="field-wrapper">
+                    <label>Full Name</label>
+                    <input type="text" name="fullname" placeholder="ชื่อ-นามสกุล" required>
+                </div>
+                <div class="field-wrapper">
+                    <label>Nickname</label>
+                    <input type="text" name="nickname" placeholder="ชื่อเล่น" required>
+                </div>
+            </div>
+
+            <div class="field-wrapper">
+                <label>Student ID</label>
+                <input type="text" name="student_id" placeholder="รหัสนิสิต" required>
+            </div>
+
+            <div class="field-wrapper">
+                <label>Portrait Photo</label>
+                <div class="file-input-wrapper">
+                    <input type="file" id="photo" accept="image/*" required>
+                    <span class="file-custom" id="fileName">แนบรูปภาพถ่ายหน้าตรง</span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-modern" id="submitBtn">SUBMIT APPLICATION</button>
+            <button type="button" onclick="closeForm()"
+                style="background:none; border:none; color:grey; cursor:pointer; width:100%; margin-top:10px;">ปิดหน้าต่างนี้</button>
+        </form>
+    </div>
+
     <header class="top-header">
         <div class="top-header-inner">
             <img src="photo/IMG_5501.PNG" alt="ICT Cheerleader UP" class="top-logo">
@@ -22,21 +76,17 @@
         </div>
     </header>
 
-    <!-- ================= HERO / NEXT GEN ================= -->
     <section class="next-gen">
         <div class="next-gen-overlay">
             <h2>
                 NEXT GENERATION
                 <span>รุ่นต่อไป กำลังจะมา</span>
             </h2>
-
-            <p>
-                พร้อมพลังใหม่ ความคิดใหม่
-            </p>
-
+            <p>พร้อมพลังใหม่ ความคิดใหม่</p>
             <div class="next-gen-badge">COMING SOON</div>
         </div>
     </section>
+
     <section class="registration-section">
         <section class="reg-luxury">
             <div class="reg-border-box">
@@ -51,6 +101,7 @@
                 </div>
             </div>
         </section>
+
         <section class="leader-section">
             <div class="magic-container">
                 <h2 class="section-title">
@@ -60,10 +111,9 @@
                 </h2>
             </div>
         </section>
-        <!-- ================= ACTIVITIES ================= -->
+
         <section class="activity-section" id="activity">
             <h2 class="section-title">Activities</h2>
-
             <div class="activity-grid">
                 <article class="activity-card">
                     <img src="photo/IMG_2096.PNG" alt="">
@@ -72,7 +122,6 @@
                         <p>มาเป็นส่วนหนึ่งของผู้นำเชียร์<br>คณะเทคโนโลยีสารสนเทสและการสื่อสาร</p>
                     </div>
                 </article>
-
                 <article class="activity-card">
                     <img src="photo/IMG_2095.PNG" alt="">
                     <div class="activity-info">
@@ -80,7 +129,6 @@
                         <p>กิจกรรมสร้างความประทับใจแรก</p>
                     </div>
                 </article>
-
                 <article class="activity-card">
                     <img src="photo/IMG_2097.PNG" alt="">
                     <div class="activity-info">
@@ -88,7 +136,6 @@
                         <p>แสดงพลังและความสามารถของผู้นำเชียร์</p>
                     </div>
                 </article>
-
                 <article class="activity-card">
                     <img src="photo/IMG_2094.PNG" alt="">
                     <div class="activity-info">
@@ -99,7 +146,6 @@
             </div>
         </section>
 
-        <!-- ================= LEADER ================= -->
         <section class="leader-section">
             <h2 class="section-title">Generation 14</h2>
             <div class="leader-scroll">
@@ -148,33 +194,25 @@
             </div>
         </section>
 
-        <!-- ================= FOOTER ================= -->
         <footer class="footer" id="footer">
             <div class="footer-container">
-
                 <div class="footer-brand">
                     <img src="photo/IMG_5501.PNG" alt="">
                     <h3>ICT CHEERLEADER UP</h3>
-                    <p>
-                        School of Information and Communication Technology<br>
-                        Cheerleader
-                    </p>
+                    <p>School of Information and Communication Technology<br>Cheerleader</p>
                 </div>
-
                 <div class="footer-social">
                     <h4>Contact</h4>
-                    <a href="https://www.facebook.com/" target="_blank">Facebook</a>
+                    <a href="#" target="_blank">Facebook</a>
                     <a href="https://www.instagram.com/spiritcheer_ict.up" target="_blank">Instagram</a>
                     <a href="https://www.tiktok.com/@ictspiritcheer.up" target="_blank">TikTok</a>
                 </div>
-
             </div>
-
             <div class="footer-bottom">
                 © 2026 ICT CHEERLEADER UP · All rights reserved
             </div>
         </footer>
-
+    </section>
 </body>
 
 </html>
