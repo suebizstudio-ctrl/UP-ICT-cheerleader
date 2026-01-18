@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cheerleader Registration</title>
     <link rel="stylesheet" href="ApplyForMembership.css">
+    <link rel="shortcut icon" href="photo/logo2.png" sizes="32x32" type="image/x-icon">
 </head>
 
 <body>
@@ -13,6 +14,7 @@
         <form
             action="https://script.google.com/macros/s/AKfycbxT3vcXxigxLRaVNQBGJDk0-3nQRDNeDrbynlEUnea3cerf60UMriNNwRTthxsbq1US/exec"
             method="POST" class="modern-form" id="regForm">
+
             <h2 class="form-header">Cheerleader Registration</h2>
             <p class="form-description">แบบฟอร์มสมัครคัดเลือกผู้นำเชียร์ คณะ ICT</p>
 
@@ -50,7 +52,9 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn-modern" id="submitBtn">SUBMIT APPLICATION</button>
+            <button type="submit" class="btn-modern" id="submitBtn">
+                SUBMIT APPLICATION
+            </button>
         </form>
     </div>
 
@@ -58,14 +62,46 @@
         const form = document.getElementById('regForm');
         const submitBtn = document.getElementById('submitBtn');
         const fileInput = document.getElementById('photo');
+        const fileNameText = document.getElementById('fileName');
+        const formDescription = document.querySelector('.form-description');
 
-        // แสดงชื่อไฟล์เมื่อเลือกรูป
+        // ===== ตรวจสอบช่วงเวลาเปิดรับสมัคร =====
+        function checkFormWindow() {
+            const openDate = new Date('2026-01-2T09:00:00');
+            const closeDate = new Date('2026-01-25T23:59:00');
+            const now = new Date();
+
+            if (now < openDate) {
+                submitBtn.disabled = true;
+                submitBtn.innerText = "COMING SOON";
+                formDescription.innerHTML =
+                    "ระบบจะเปิดรับสมัครในวันที่ 20 ม.ค. 69 เวลา 09:00 น.";
+            } else if (now > closeDate) {
+                submitBtn.disabled = true;
+                submitBtn.innerText = "CLOSED";
+                submitBtn.style.backgroundColor = "#ccc";
+                formDescription.innerHTML =
+                    "ขออภัย ปิดรับสมัครผู้นำเชียร์เรียบร้อยแล้ว";
+            }
+        }
+
+        window.onload = checkFormWindow;
+
+        // ===== แสดงชื่อไฟล์ =====
         fileInput.addEventListener('change', function () {
-            document.getElementById('fileName').innerText = this.files[0].name;
+            if (this.files.length > 0) {
+                fileNameText.innerText = this.files[0].name;
+            }
         });
 
+        // ===== ส่งข้อมูลสมัคร =====
         form.addEventListener('submit', function (e) {
             e.preventDefault();
+
+            if (!fileInput.files.length) {
+                alert("กรุณาแนบรูปภาพ");
+                return;
+            }
 
             submitBtn.disabled = true;
             submitBtn.innerText = "UPLOADING...";
@@ -75,6 +111,7 @@
 
             reader.onload = function () {
                 const base64Data = reader.result.split(',')[1];
+
                 const data = {
                     base64: base64Data,
                     type: file.type,
@@ -91,19 +128,23 @@
                     body: JSON.stringify(data)
                 })
                     .then(res => res.text())
-                    .then(response => {
-                        alert("สมัครสมาชิกสำเร็จ!");
-                        form.reset();
-                        document.getElementById('fileName').innerText = "แนบรูปภาพถ่ายหน้าตรง";
-                        submitBtn.disabled = false;
-                        submitBtn.innerText = "SUBMIT APPLICATION";
+                    .then(() => {
+                        // เก็บชื่อไว้ใช้หน้า success
+                        localStorage.setItem(
+                            "ict_fullname",
+                            form.fullname.value
+                        );
+
+                        // ไปหน้ายินดีต้อนรับ
+                        window.location.href = "success.html";
                     })
-                    .catch(err => {
+                    .catch(() => {
                         alert("เกิดข้อผิดพลาด กรุณาลองใหม่");
                         submitBtn.disabled = false;
                         submitBtn.innerText = "SUBMIT APPLICATION";
                     });
             };
+
             reader.readAsDataURL(file);
         });
     </script>
