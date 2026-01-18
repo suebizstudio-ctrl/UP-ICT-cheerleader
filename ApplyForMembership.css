@@ -1,123 +1,205 @@
-/* คอนเทนเนอร์หลัก */
+/* ===== CONTAINER ===== */
 .form-container-minimal {
     display: flex;
     justify-content: center;
-    padding: 80px 20px;
-    background-color: #ffffff;
+    padding: 90px 20px;
+    background:
+        radial-gradient(circle at top right, rgba(212,175,55,0.08), transparent 40%),
+        linear-gradient(180deg, #ffffff, #fafafa);
+    position: relative;
+    overflow: hidden;
 }
 
+/* เส้นเทคโนโลยีพื้นหลัง */
+.form-container-minimal::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+
+/* ===== FORM ===== */
 .modern-form {
     width: 100%;
-    max-width: 500px;
+    max-width: 520px;
     text-align: left;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(6px);
+    padding: 50px 45px;
+    border-radius: 16px;
+    box-shadow:
+        0 30px 60px rgba(0,0,0,0.06),
+        inset 0 0 0 1px rgba(212,175,55,0.15);
 }
 
-/* หัวข้อ */
+/* ===== HEADER ===== */
 .form-header {
     font-family: 'Anuphan', sans-serif;
-    font-size: 32px;
+    font-size: 34px;
     font-weight: 600;
-    color: #1a1a1a;
-    margin-bottom: 5px;
+    color: #111;
+    margin-bottom: 8px;
     letter-spacing: -1px;
+    position: relative;
+}
+
+/* เส้น accent ใต้หัวข้อ */
+.form-header::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #d4af37, #b89c6d);
+    margin-top: 12px;
+    border-radius: 2px;
 }
 
 .form-description {
     font-size: 14px;
-    color: #888;
-    margin-bottom: 40px;
+    color: #777;
+    margin-bottom: 45px;
     font-weight: 300;
+    line-height: 1.7;
 }
 
-/* การจัดวางแบบแถวคู่ */
+/* ===== FIELD LAYOUT ===== */
 .field-row {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 20px;
+    gap: 24px;
 }
 
 .field-wrapper {
-    margin-bottom: 30px;
+    margin-bottom: 32px;
+    position: relative;
 }
 
+/* ===== LABEL ===== */
 .field-wrapper label {
     display: block;
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     font-weight: 600;
     color: #b89c6d;
-    /* สีทองหม่นแบบมินิมอล */
     margin-bottom: 10px;
 }
 
+/* ===== INPUT ===== */
 .modern-form input,
 .modern-form textarea {
     width: 100%;
-    padding: 12px 0;
+    padding: 14px 0;
     border: none;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e1e1e1;
     font-family: 'Anuphan', sans-serif;
     font-size: 15px;
     background: transparent;
-    transition: all 0.3s ease;
+    transition: all 0.35s ease;
     outline: none;
 }
 
-/* เมื่อคลิกพิมพ์ */
+/* focus แบบเทค */
 .modern-form input:focus,
 .modern-form textarea:focus {
-    border-bottom: 1px solid #1a1a1a;
+    border-bottom: 1px solid #d4af37;
+    box-shadow: 0 6px 0 -4px rgba(212,175,55,0.35);
 }
 
-/* ตกแต่งช่องแนบไฟล์ */
+/* ===== FILE UPLOAD ===== */
 .file-input-wrapper {
     position: relative;
-    border: 1px dashed #e5e5e5;
-    padding: 20px;
+    border: 1px dashed rgba(212,175,55,0.5);
+    padding: 26px;
     text-align: center;
     cursor: pointer;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    background: linear-gradient(180deg, #fff, #fafafa);
+}
+
+.file-input-wrapper:hover {
+    border-color: #d4af37;
+    background: rgba(212,175,55,0.05);
 }
 
 .file-input-wrapper input[type="file"] {
     position: absolute;
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
+    inset: 0;
     opacity: 0;
     cursor: pointer;
 }
 
 .file-custom {
     font-size: 13px;
-    color: #999;
+    color: #777;
+    letter-spacing: 1px;
 }
 
-/* ปุ่มกด */
+/* ===== BUTTON ===== */
 .btn-modern {
     width: 100%;
     padding: 18px;
-    margin-top: 20px;
-    background-color: #1a1a1a;
+    margin-top: 30px;
+    background:
+        linear-gradient(135deg, #1a1a1a, #000);
     color: #fff;
     border: none;
     font-family: 'Anuphan', sans-serif;
     font-size: 14px;
     font-weight: 500;
-    letter-spacing: 2px;
+    letter-spacing: 2.5px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    border-radius: 14px;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* แสงวิ่งแบบ tech */
+.btn-modern::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(212,175,55,0.35),
+        transparent
+    );
+    transition: 0.6s;
+}
+
+.btn-modern:hover::before {
+    left: 100%;
 }
 
 .btn-modern:hover {
-    background-color: #d4af37;
-    /* เปลี่ยนเป็นสีทองเวลา Hover */
-    transform: translateY(-3px);
+    background: linear-gradient(135deg, #d4af37, #b89c6d);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(212,175,55,0.35);
 }
 
-/* สำหรับมือถือ */
+/* ===== MOBILE ===== */
 @media (max-width: 480px) {
+    .modern-form {
+        padding: 40px 26px;
+        border-radius: 14px;
+    }
+
+    .form-header {
+        font-size: 28px;
+    }
+
     .field-row {
         grid-template-columns: 1fr;
     }
