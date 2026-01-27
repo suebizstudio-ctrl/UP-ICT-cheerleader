@@ -9,41 +9,48 @@
     <!-- favicon -->
     <link rel="shortcut icon" href="photo/logo2.png" type="image/x-icon">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <!-- CSS -->
     <link rel="stylesheet" href="success.css">
 </head>
 
 <body>
-    <div class="success-box">
-        <img src="photo/IMG_5501.PNG" alt="ICT Cheerleader Logo">
 
-        <h1>WELCOME</h1>
+    <div class="page-wrap">
 
-        <p>
-            ยินดีต้อนรับ <strong id="userName"></strong><br>
-            การสมัครของคุณถูกส่งเรียบร้อยแล้ว
-        </p>
+        <!-- SUCCESS CARD -->
 
-        <p>
-            สมัครผู้นำเชียร์คณะ ICT สำเร็จแล้ว<br>
-            รอติดตามข่าวสารเร็ว ๆ นี้
-        </p>
+        <div class="success-box">
 
-        <a href="index.html" class="btn-back">กลับหน้าแรก</a>
+            <img src="photo/IMG_5501.PNG">
+
+            <h1>สมัครสำเร็จ</h1>
+
+            <p>
+                ขอบคุณที่เข้าร่วมเป็นส่วนหนึ่งของ ICT Cheerleader<br>
+                แล้วพบกันในกิจกรรมเร็ว ๆ นี้
+            </p>
+
+            <a href="index.html" class="btn-back">กลับหน้าแรก</a>
+
+        </div>
+
+        <!-- FOOTER -->
+
+        <footer class="lux-footer">
+
+            <img src="photo/IMG_5501.PNG">
+
+            <div class="lux-copy">
+                © 2026 ICT CHEERLEADER UP · Designed for the Future Generation
+            </div>
+
+        </footer>
+
     </div>
 
-    <script>
-        // ดึงชื่อจาก localStorage
-        const name = localStorage.getItem("ict_fullname");
-        const nameBox = document.getElementById("userName");
-
-        if (name) {
-            nameBox.innerText = name;
-        } else {
-            // กันเข้าหน้านี้ตรง ๆ
-            window.location.href = "index.html";
-        }
-    </script>
 </body>
 
 </html>
