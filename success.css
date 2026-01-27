@@ -2,141 +2,146 @@
 
 :root {
     --gold: #d4af37;
-    --gold-soft: rgba(212, 175, 55, 0.35);
     --bg-dark: #050505;
 }
 
-/* ===== BODY ===== */
-body {
+/* RESET */
+
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+
+body {
     min-height: 100vh;
     font-family: 'Anuphan', sans-serif;
     background:
-        radial-gradient(circle at top, rgba(212, 175, 55, 0.18), transparent 55%),
-        radial-gradient(circle at bottom, rgba(255, 255, 255, 0.04), transparent 60%),
+        radial-gradient(circle at top, rgba(212, 175, 55, .18), transparent 55%),
+        radial-gradient(circle at bottom, rgba(255, 255, 255, .04), transparent 60%),
         linear-gradient(180deg, #0b0b0b, var(--bg-dark));
+    color: white;
+}
+
+/* WRAPPER */
+
+.page-wrap {
+    min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #fff;
-    text-align: center;
-    overflow: hidden;
 }
 
-/* ===== CARD ===== */
+/* SUCCESS CARD */
+
 .success-box {
-    position: relative;
-    background: linear-gradient(180deg,
-            rgba(0, 0, 0, 0.68),
-            rgba(0, 0, 0, 0.88));
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    padding: 56px 34px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, .7), rgba(0, 0, 0, .9));
+    border: 1px solid rgba(212, 175, 55, .35);
+    padding: 60px 40px;
     max-width: 420px;
     width: 90%;
-    border-radius: 22px;
+    border-radius: 24px;
+    text-align: center;
     backdrop-filter: blur(14px);
-    box-shadow:
-        0 30px 60px rgba(0, 0, 0, 0.65),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.035);
-    animation: softIn 0.9s ease forwards;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, .6);
+    animation: softIn .9s ease forwards;
+    position: relative;
 }
 
-/* Glow aura */
 .success-box::after {
     content: "";
     position: absolute;
     inset: -40px;
-    background: radial-gradient(circle at center,
-            rgba(212, 175, 55, 0.08),
-            transparent 70%);
+    background: radial-gradient(circle, rgba(212, 175, 55, .08), transparent 70%);
     z-index: -1;
 }
 
-/* ===== LOGO ===== */
 .success-box img {
-    width: 82px;
-    margin-bottom: 26px;
-    filter: drop-shadow(0 0 16px rgba(212, 175, 55, 0.45));
+    width: 90px;
+    margin-bottom: 25px;
+    filter: drop-shadow(0 0 15px rgba(212, 175, 55, .5));
 }
 
-/* ===== TITLE ===== */
 .success-box h1 {
-    font-size: 30px;
-    letter-spacing: 4px;
-    font-weight: 500;
     color: var(--gold);
-    margin-bottom: 14px;
+    letter-spacing: 4px;
+    font-size: 28px;
+    margin-bottom: 12px;
 }
 
-/* ===== TEXT ===== */
 .success-box p {
     font-size: 15px;
-    color: #d9d9d9;
     line-height: 1.8;
-    margin-bottom: 22px;
+    color: #ddd;
+    margin-bottom: 25px;
 }
 
-/* ===== BUTTON ===== */
+/* BUTTON */
+
 .btn-back {
     display: inline-block;
-    margin-top: 12px;
-    padding: 14px 44px;
+    padding: 14px 45px;
     border-radius: 999px;
     background: linear-gradient(135deg, #f7dc8b, #d4af37);
     color: #111;
     text-decoration: none;
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 12px;
     letter-spacing: 2px;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.35s ease;
-}
-
-.btn-back::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(120deg,
-            transparent,
-            rgba(255, 255, 255, 0.45),
-            transparent);
-    transition: left 0.6s ease;
-}
-
-.btn-back:hover::after {
-    left: 100%;
+    transition: .4s;
 }
 
 .btn-back:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 28px rgba(212, 175, 55, 0.45);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, .45);
 }
 
-/* ===== ANIMATION ===== */
+/* FOOTER */
+
+.lux-footer {
+    margin-top: 100px;
+    text-align: center;
+    color: #666;
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+.lux-footer img {
+    width: 70px;
+    opacity: .8;
+    margin-bottom: 10px;
+}
+
+.lux-copy {
+    margin-top: 10px;
+}
+
+/* ANIMATION */
+
 @keyframes softIn {
     from {
         opacity: 0;
-        transform: translateY(26px) scale(0.97);
+        transform: translateY(20px) scale(.97);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: none;
     }
 }
 
-/* ===== MOBILE ===== */
-@media (max-width: 480px) {
+/* MOBILE */
+
+@media(max-width:480px) {
+
     .success-box {
-        padding: 44px 26px;
+        padding: 45px 25px;
     }
 
     .success-box h1 {
-        font-size: 24px;
-        letter-spacing: 3px;
+        font-size: 22px;
     }
+
 }
