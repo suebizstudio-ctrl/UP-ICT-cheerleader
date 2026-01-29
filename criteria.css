@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Anuphan',sans-serif;
+}
+
+body{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+background:
+radial-gradient(circle at top,#7fd8ff30,transparent 60%),
+linear-gradient(180deg,#0b0f1c,#050505);
+color:white;
+overflow:hidden;
+}
+
+/* container */
+
+.criteria-container{
+text-align:center;
+padding:40px;
+animation:fadeUp 1s ease;
+}
+
+.criteria-logo{
+width:90px;
+margin-bottom:20px;
+filter:drop-shadow(0 0 15px #7fd8ff);
+}
+
+h1{
+font-weight:400;
+letter-spacing:4px;
+margin-bottom:30px;
+}
+
+/* glass card */
+
+.criteria-card{
+max-width:460px;
+margin:auto;
+padding:45px 40px;
+border-radius:28px;
+background:linear-gradient(160deg,
+rgba(255,255,255,.15),
+rgba(255,255,255,.03));
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,.25);
+box-shadow:
+0 25px 60px rgba(0,0,0,.5),
+0 0 40px rgba(150,200,255,.15);
+}
+
+/* list */
+
+.criteria-card ul{
+list-style:none;
+text-align:left;
+}
+
+.criteria-card li{
+margin-bottom:18px;
+padding-left:18px;
+position:relative;
+font-size:15px;
+letter-spacing:1px;
+}
+
+.criteria-card li:before{
+content:"✦";
+position:absolute;
+left:0;
+color:#7fd8ff;
+}
+
+/* buttons */
+
+.criteria-buttons{
+margin-top:40px;
+display:flex;
+justify-content:center;
+gap:22px;
+flex-wrap:wrap;
+}
+
+.back-btn,
+.next-btn{
+padding:13px 38px;
+border-radius:50px;
+text-decoration:none;
+letter-spacing:2px;
+font-size:12px;
+border:1px solid rgba(255,255,255,.25);
+background:rgba(255,255,255,.08);
+color:white;
+backdrop-filter:blur(10px);
+transition:.35s ease;
+}
+
+/* hover */
+
+.back-btn:hover,
+.next-btn:hover{
+transform:translateY(-3px);
+background:rgba(255,255,255,.18);
+box-shadow:0 0 18px rgba(180,220,255,.35);
+}
+
+/* next highlight */
+
+.next-btn{
+border-color:#9fd8ff;
+color:#9fd8ff;
+}
+
+.next-btn:hover{
+color:black;
+background:linear-gradient(135deg,#9fd8ff,#cdb4ff);
+}
+
+/* mobile */
+
+@media(max-width:480px){
+
+.criteria-card{
+padding:35px 25px;
+}
+
+h1{
+font-size:22px;
+letter-spacing:2px;
+}
+
+.criteria-buttons{
+flex-direction:column;
+}
+
+.back-btn,
+.next-btn{
+width:100%;
+text-align:center;
+}
+
+}
+
+/* animation */
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
