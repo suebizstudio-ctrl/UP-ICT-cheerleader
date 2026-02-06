@@ -70,4 +70,15 @@ function checkRegistrationStatus() {
         if (badge) badge.innerText = "CLOSED";
     }
 }
+<script>
+fetch("http://localhost/admin/content.json")
+.then(r=>r.json())
+.then(data=>{
+ document.getElementById("title").innerText = data.title;
+ document.getElementById("desc").innerText = data.desc;
+ document.getElementById("announce").innerText = data.announce;
+});
+</script>
+
+
 
