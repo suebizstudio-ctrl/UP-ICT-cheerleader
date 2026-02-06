@@ -1,266 +1,87 @@
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
-    <meta charset="UTF-8">
-    <title>ICT CHEERLEADER UP</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>ICT CHEERLEADER UP</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
 
-    <link rel="stylesheet" href="style.css">
-
-    <script src="script.js" defer></script>
-
-    <link rel="shortcut icon" href="photo/logo2.png" sizes="32x32" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<link rel="shortcut icon" href="photo/logo2.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
-    <script>
-        fetch("http://localhost/admin/content.json")
-            .then(res => res.json())
-            .then(data => {
-                document.getElementById("siteTitle").innerText = data.title;
-                document.getElementById("siteGen").innerText = data.gen;
-                document.getElementById("siteDesc").innerText = data.desc;
-            });
-    </script>
 
-
-
-    <header class="top-nav">
-
-        <div class="nav-left">
-            <a href="#home">Home</a>
-            <a href="#member">Activity</a>
-            <a href="#activity">Members</a>
-        </div>
-
-        <div class="nav-center">
-            <img src="photo/IMG_5501.PNG" class="logo">
-        </div>
-
-        <div class="nav-right social">
-            <a
-                href="https://www.facebook.com/profile.php?id=61565989303123&mibextid=LQQJ4d&utm_source=ig&utm_medium=social&utm_content=link_in_bio"><i
-                    class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/spiritcheer_ict.up/"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.tiktok.com/@ictspiritcheer.up?is_from_webapp=1&sender_device=pc"><i
-                    class="fab fa-tiktok"></i></a>
-        </div>
-
-    </header>
-
-
-    <section class="hero"></section>
-    <section class="teaser-section">
-
-        <div class="teaser-wrap">
-            <div class="label" id="siteTitle">ICT CHEERLEADER</div>
-            <div class="title" id="siteGen">GENERATION 15</div>
-            <div class="desc" id="siteDesc">Coming Soon</div>
-
-
-        </div>
-
-    </section>
-    <section class="recruit-section">
-
-        <div class="recruit-wrap">
-
-            <div class="recruit-label">NEXT GENERATION</div>
-            <div class="recruit-title">OPEN RECRUITMENT</div>
-            <div class="recruit-desc">
-                Become part of ICT Cheerleader.<br>
-                Step into the next generation.
-            </div>
-            <a href="criteria.html" class="recruit-btn">APPLY NOW</a>
-
-        </div>
-
-    </section>
-
-    <section class="activity-section" id="activity">
-
-
-        <h2 class="activity-title">ACTIVITIES</h2>
-
-        <div class="activity-grid">
-
-            <div class="activity-card">
-                <a href="Orientation.html">
-                    <img src="photo/IMG_2095.PNG">
-                    <div class="activity-name">Orientation Event</div>
-                </a>
-            </div>
-            <div class="activity-card">
-                <a href="relationships.html">
-                    <img src="photo/IMG_2094.PNG">
-                    <div class="activity-name">Exchange of cheerleading and relationships</div>
-                </a>
-            </div>
-            <div class="activity-card">
-                <img src="photo/IMG_2097.PNG">
-                <div class="activity-name">FahMui Game Competition</div>
-            </div>
-            <div class="activity-card">
-                <img src="photo/IMG_2096.PNG">
-                <div class="activity-name">Recruitment Lead Gen 15</div>
-            </div>
-
-
-
-        </div>
-
-    </section>
-    <!-- VIDEO SECTION -->
-
-    <section class="video-section">
-
-        <div class="video-title">Fahmui games</div>
-
-        <div class="video-wrap">
-
-            <iframe src="https://www.youtube.com/embed/dNF-W99HcFg?si=3zEf5WoRTVorEqpB" allowfullscreen>
-            </iframe>
-
-        </div>
-
-    </section>
-
-
-    <section class="member-section" id="member">
-
-        <h2 class="member-title">MEMBERS GENERATION</h2>
-
-        <!-- GEN 14 -->
-        <div class="gen-block">
-            <h3>GENERATION 14</h3>
-
-            <div class="member-slider">
-                <div class="member-track">
-                    <div class="member-card">
-
-                        <img src="photo/gen14-1.png" class="member-img">
-                    </div>
-
-                    <div class="member-card">
-
-                        <img src="photo/gen14-2.png" class="member-img">
-                    </div>
-
-                    <div class="member-card">
-
-                        <img src="photo/gen14-3.png" class="member-img">
-
-                    </div>
-
-                    <div class="member-card">
-
-                        <img src="photo/gen14-4.png" class="member-img">
-
-                    </div>
-
-                    <div class="member-card">
-
-                        <img src="photo/gen14-5.png" class="member-img">
-
-                    </div>
-
-                    <div class="member-card">
-
-                        <img src="photo/gen14-6.png" class="member-img">
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- GEN 13 -->
-        <div class="gen-block">
-            <h3>GENERATION 13</h3>
-
-            <div class="member-slider">
-                <div class="member-track">
-
-                    <div class="member-card">
-                        <img src="photo/gen13-4.png" class="member-img">
-
-                    </div>
-
-                    <div class="member-card">
-                        <img src="photo/gen13-2.png" class="member-img">
-
-                    </div>
-
-                    <div class="member-card">
-                        <img src="photo/gen13-3.png" class="member-img">
-
-                    </div>
-
-                    <div class="member-card">
-                        <img src="photo/gen13-1.png" class="member-img">
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- GEN 12 -->
-        <div class="gen-block">
-            <h3>GENERATION 12</h3>
-
-            <div class="member-grid one">
-
-                <div class="member-card">
-                    <img src="photo/gen13-5.png" class="member-img">
-
-                </div>
-
-            </div>
-        </div>
-
-        <!-- GEN 11 -->
-        <div class="gen-block">
-            <h3>GENERATION 11</h3>
-
-            <div class="member-grid one">
-
-                <div class="member-card">
-                    <img src="photo/gen13-6.png" class="member-img">
-
-                </div>
-
-            </div>
-        </div>
-
-    </section>
-    <footer class="site-footer">
-        <footer class="site-footer">
-
-            <div class="footer-container">
-
-                <div class="footer-col">
-                    <img src="photo/IMG_5501.PNG" class="footer-logo">
-
-                    <p class="footer-desc">
-                        ICT Cheerleader — where elegance meets technology.<br>
-                        Shining like diamonds in the digital era.
-                    </p>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                © 2026 ICT CHEERLEADER UP · All Rights Reserved
-            </div>
-
-        </footer>
+<script>
+// HERO
+fetch("http://localhost/admin/content.json")
+.then(r=>r.json())
+.then(d=>{
+ document.getElementById("siteTitle").innerText=d.title;
+ document.getElementById("siteGen").innerText=d.gen;
+ document.getElementById("siteDesc").innerText=d.desc;
+});
+
+// ACTIVITIES
+fetch("http://localhost/admin/api/activities.php")
+.then(r=>r.json())
+.then(data=>{
+ let html="";
+ data.forEach(a=>{
+ html+=`
+ <div class="activity-card">
+   <img src="http://localhost/admin/uploads/${a.image}">
+   <div class="activity-name">${a.title}</div>
+ </div>
+ `;
+ });
+ document.getElementById("activities").innerHTML=html;
+});
+</script>
+
+<header class="top-nav">
+
+<div class="nav-left">
+<a href="#home">Home</a>
+<a href="#activity">Activity</a>
+<a href="#member">Members</a>
+</div>
+
+<div class="nav-center">
+<img src="photo/IMG_5501.PNG" class="logo">
+</div>
+
+<div class="nav-right social">
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-tiktok"></i></a>
+</div>
+
+</header>
+
+<section class="hero"></section>
+
+<section class="teaser-section">
+<div class="teaser-wrap">
+<div class="label" id="siteTitle"></div>
+<div class="title" id="siteGen"></div>
+<div class="desc" id="siteDesc"></div>
+</div>
+</section>
+
+<section class="activity-section" id="activity">
+<h2 class="activity-title">ACTIVITIES</h2>
+<div class="activity-grid" id="activities"></div>
+</section>
+
+<footer class="site-footer">
+<div class="footer-bottom">
+© 2026 ICT CHEERLEADER UP · All Rights Reserved
+</div>
+</footer>
 
 </body>
-
 </html>
