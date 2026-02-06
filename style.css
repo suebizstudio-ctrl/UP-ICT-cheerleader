@@ -300,75 +300,99 @@
 /* =====================
    ACTIVITY GRID
 ===================== */
-
-.activity-section {
-    padding: 120px 60px;
-    background: #fcf6e5;
-}
-
-.activity-title {
-    text-align: center;
-    letter-spacing: 6px;
-    margin-bottom: 60px;
-    font-weight: 400;
-}
-
-/* grid */
-
-.activity-grid {
-    max-width: 1200px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 40px;
-}
-
-/* card */
-
 .activity-card {
-    background: white;
-    border-radius: 26px;
+    position: relative;
+    border-radius: 22px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, .08);
-    transition: .4s ease;
+    background: rgba(255, 255, 255, .05);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(227, 204, 163, .35);
+    transition: .6s ease;
 }
 
-.activity-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 35px 80px rgba(0, 0, 0, .14);
+.activity-card a {
+    display: block;
+    height: 100%;
 }
 
-/* image */
+/* IMAGE */
 
 .activity-card img {
     width: 100%;
-    height: 240px;
+    height: 280px;
     object-fit: cover;
+    transition: .8s ease;
+    filter:
+        brightness(1.05) contrast(1.05) saturate(1.05);
+}
+
+/* PEARL OVERLAY */
+
+.activity-card:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(135deg, transparent, rgba(246, 239, 230, .25));
+    opacity: 0;
+    transition: .6s;
+    z-index: 2;
+}
+
+/* GOLD FRAME */
+
+.activity-card:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(227, 204, 163, .5);
+    border-radius: 22px;
+    opacity: 0;
     transition: .5s;
+    z-index: 3;
 }
 
-.activity-card:hover img {
-    transform: scale(1.05) translateY(10px);
-
-}
-
-
-/* name */
+/* NAME */
 
 .activity-name {
-    padding: 22px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 18px 22px;
     text-align: center;
+    letter-spacing: 2px;
     font-size: 13px;
-    letter-spacing: 3px;
+
+    background:
+        linear-gradient(180deg, transparent, rgba(0, 0, 0, .75));
+
+    color: #f6efe6;
+    z-index: 4;
 }
 
-/* responsive */
+/* HOVER ROYAL */
+
+.activity-card:hover img {
+    transform: scale(1.08);
+}
+
+.activity-card:hover:before {
+    opacity: 1;
+}
+
+.activity-card:hover:after {
+    opacity: 1;
+}
+
+.activity-card:hover {
+    box-shadow:
+        0 0 35px rgba(233, 219, 195, .4),
+        inset 0 0 25px rgba(246, 239, 230, .3);
+}
+
+/* MOBILE */
 
 @media(max-width:768px) {
-
-    .activity-section {
-        padding: 90px 30px;
-    }
 
     .activity-card img {
         height: 200px;
@@ -376,14 +400,6 @@
 
 }
 
-@media(max-width:480px) {
-
-    .activity-name {
-        font-size: 12px;
-        letter-spacing: 2px;
-    }
-
-}
 
 /* =====================
    VIDEO SECTION
