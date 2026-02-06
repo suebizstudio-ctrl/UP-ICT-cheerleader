@@ -19,9 +19,17 @@
 </head>
 
 <body>
-<h1 id="title"></h1>
-<p id="desc"></p>
-<div id="announce"></div>
+    <script>
+        fetch("http://localhost/admin/content.json")
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("siteTitle").innerText = data.title;
+                document.getElementById("siteGen").innerText = data.gen;
+                document.getElementById("siteDesc").innerText = data.desc;
+            });
+    </script>
+
+
 
     <header class="top-nav">
 
@@ -51,9 +59,11 @@
     <section class="teaser-section">
 
         <div class="teaser-wrap">
-            <div class="label">ICT CHEERLEADER</div>
-            <div class="title">GENERATION 15</div>
-            <div class="desc">Coming Soon</div>
+            <div class="label" id="siteTitle">ICT CHEERLEADER</div>
+            <div class="title" id="siteGen">GENERATION 15</div>
+            <div class="desc" id="siteDesc">Coming Soon</div>
+
+
         </div>
 
     </section>
@@ -81,19 +91,27 @@
         <div class="activity-grid">
 
             <div class="activity-card">
-                <img src="photo/IMG_2095.PNG">
-                <div class="activity-name">Orientation Event</div>
+                <a href="Orientation.html">
+                    <img src="photo/IMG_2095.PNG">
+                    <div class="activity-name">Orientation Event</div>
+                </a>
             </div>
-
+            <div class="activity-card">
+                <a href="relationships.html">
+                    <img src="photo/IMG_2094.PNG">
+                    <div class="activity-name">Exchange of cheerleading and relationships</div>
+                </a>
+            </div>
+            <div class="activity-card">
+                <img src="photo/IMG_2097.PNG">
+                <div class="activity-name">FahMui Game Competition</div>
+            </div>
             <div class="activity-card">
                 <img src="photo/IMG_2096.PNG">
                 <div class="activity-name">Recruitment Lead Gen 15</div>
             </div>
 
-            <div class="activity-card">
-                <img src="photo/IMG_2097.PNG">
-                <div class="activity-name">FahMui Game Competition</div>
-            </div>
+
 
         </div>
 
@@ -125,37 +143,37 @@
             <div class="member-slider">
                 <div class="member-track">
                     <div class="member-card">
-                       
+
                         <img src="photo/gen14-1.png" class="member-img">
                     </div>
 
                     <div class="member-card">
-                        
+
                         <img src="photo/gen14-2.png" class="member-img">
                     </div>
 
                     <div class="member-card">
-                        
+
                         <img src="photo/gen14-3.png" class="member-img">
-                       
+
                     </div>
 
                     <div class="member-card">
-                       
+
                         <img src="photo/gen14-4.png" class="member-img">
-                        
+
                     </div>
 
                     <div class="member-card">
-                        
+
                         <img src="photo/gen14-5.png" class="member-img">
-                        
+
                     </div>
 
                     <div class="member-card">
-                        <a href="ลิงก์ไอจีจริงของคนนี้" target="_blank"></a>
+
                         <img src="photo/gen14-6.png" class="member-img">
-                        
+
                     </div>
 
                 </div>
@@ -171,22 +189,22 @@
 
                     <div class="member-card">
                         <img src="photo/gen13-4.png" class="member-img">
-                        
+
                     </div>
 
                     <div class="member-card">
                         <img src="photo/gen13-2.png" class="member-img">
-                        
+
                     </div>
 
                     <div class="member-card">
                         <img src="photo/gen13-3.png" class="member-img">
-                        
+
                     </div>
 
                     <div class="member-card">
                         <img src="photo/gen13-1.png" class="member-img">
-                        
+
                     </div>
 
                 </div>
@@ -201,7 +219,7 @@
 
                 <div class="member-card">
                     <img src="photo/gen13-5.png" class="member-img">
-                    
+
                 </div>
 
             </div>
@@ -215,7 +233,7 @@
 
                 <div class="member-card">
                     <img src="photo/gen13-6.png" class="member-img">
-                    
+
                 </div>
 
             </div>
@@ -246,4 +264,3 @@
 </body>
 
 </html>
-
