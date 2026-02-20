@@ -1,0 +1,121 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Anuphan', sans-serif;
+}
+
+/* ===== BODY ===== */
+body {
+    background: linear-gradient(135deg, #f6efe8, #fbf9f6);
+    color: #6b5e54;
+}
+
+/* ===== HEADER ===== */
+.gallery-header {
+    text-align: center;
+    padding: 70px 20px 50px;
+    background: radial-gradient(circle at top, #ffffff, #f2e7dc);
+}
+
+.gallery-header h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: #7a6656;
+}
+
+.gallery-header p {
+    margin-top: 12px;
+    font-size: 1.1rem;
+    color: #9b8a7a;
+}
+
+/* ===== BACK BUTTON ===== */
+.back-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: #7a6656;
+    border: 1px solid #d8c9b8;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(6px);
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: #efe4d8;
+    transform: translateY(-2px);
+}
+
+/* ===== GALLERY SECTION ===== */
+.gallery {
+    padding: 70px 8%;
+}
+
+/* ===== GRID ===== */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 35px;
+}
+
+/* ===== PHOTO CARD ===== */
+.photo {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    background: linear-gradient(145deg, #ffffff, #efe4d8);
+    aspect-ratio: 3/2;
+    /* 🔒 ล็อคกรอบรูปแนวเจ้าหญิง */
+    box-shadow:
+        0 15px 35px rgba(120, 95, 70, 0.18),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+    transition: all 0.5s ease;
+}
+
+/* ===== IMAGE ===== */
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease, filter 0.6s ease;
+    filter: brightness(0.95) contrast(0.95);
+}
+
+/* ===== HOVER EFFECT ===== */
+.photo:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 25px 45px rgba(120, 95, 70, 0.25);
+}
+
+.photo:hover img {
+    transform: scale(1.08);
+    filter: brightness(1) contrast(1);
+}
+
+/* ===== PEARL GLOW ===== */
+.photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left,
+            rgba(255, 255, 255, 0.45),
+            transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.photo:hover::after {
+    opacity: 1;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .gallery-header h1 {
+        font-size: 2.2rem;
+    }
+}
