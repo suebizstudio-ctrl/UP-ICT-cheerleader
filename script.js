@@ -48,7 +48,7 @@ function createStars() {
 // ฟังก์ชันเช็คเวลาเปิด-ปิด (20 - 25 ม.ค. 2026)
 function checkRegistrationStatus() {
     const openDate = new Date('2026-01-1T09:00:00');
-    const closeDate = new Date('2026-01-25T23:59:00');
+    const closeDate = new Date('2026-06-30T23:59:00');
     const now = new Date();
 
     const regBtn = document.querySelector('.reg-btn-elegant');
