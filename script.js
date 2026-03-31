@@ -83,3 +83,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+window.addEventListener("load", () => {
+    const loader = document.getElementById("loader");
+
+    if (!loader) return; // 🔥 กัน error ถ้า id ไม่ตรง
+
+    // ⏳ รอ 5 วิ
+    setTimeout(() => {
+
+        loader.classList.add("zoom-out");
+
+        // ⏱ รอ animation จบ แล้วลบ element ทิ้ง
+        setTimeout(() => {
+            loader.remove(); // 🔥 ดีกว่า display:none
+        }, 1000);
+
+    }, 5000);
+});
