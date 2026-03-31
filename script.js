@@ -1,84 +1,85 @@
-window.onload = function () {
-    // 1. สร้างละอองดาวแบบสุ่มตำแหน่ง (Magic Stars)
-    createStars();
+document.addEventListener("DOMContentLoaded", () => {
 
-    // 2. ตรวจสอบเวลาเปิด-ปิดรับสมัคร
-    checkRegistrationStatus();
+    const form = document.getElementById('regForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const fileInput = document.getElementById('photo');
+    const fileNameText = document.getElementById('fileName');
 
-    // 3. จัดการ Loader (หน้าจอโหลด)
-    const loader = document.getElementById('loader');
-    if (loader) {
-        setTimeout(() => {
-            loader.classList.add('loader-hidden');
-
-            // แสดงเนื้อหาหลักแบบนุ่มนวล
-            const mainContent = document.querySelector('.registration-section');
-            if (mainContent) {
-                mainContent.style.opacity = "1";
-            }
-        }, 2500); // โชว์เอฟเฟคดาว 2.5 วินาที
-    }
-};
-
-// ฟังก์ชันสร้างละอองดาวกระจายเต็มหน้าจอโหลด
-function createStars() {
-    const loader = document.getElementById('loader');
-    const starCount = 40; // จำนวนละอองดาว
-
-    for (let i = 0; i < starCount; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-
-        // สุ่มตำแหน่งกระจายตัว
-        const x = Math.random() * 100;
-        const y = Math.random() * 100;
-        const size = Math.random() * 3; // สุ่มขนาดดาว
-        const delay = Math.random() * 5; // สุ่มเวลาเริ่มกระพริบ
-
-        star.style.left = `${x}%`;
-        star.style.top = `${y}%`;
-        star.style.width = `${size}px`;
-        star.style.height = `${size}px`;
-        star.style.animationDelay = `${delay}s`;
-
-        loader.appendChild(star);
-    }
-}
-
-// ฟังก์ชันเช็คเวลาเปิด-ปิด (20 - 25 ม.ค. 2026)
-function checkRegistrationStatus() {
-    const openDate = new Date('2026-01-1T09:00:00');
+    /* ===== เวลาเปิด-ปิด ===== */
+    const openDate = new Date('2026-01-01T09:00:00');
     const closeDate = new Date('2026-06-30T23:59:00');
-    const now = new Date();
 
-    const regBtn = document.querySelector('.reg-btn-elegant');
-    const badge = document.querySelector('.next-gen-badge');
+    function checkFormWindow() {
+        const now = new Date();
 
-    if (now < openDate) {
-        if (regBtn) {
-            regBtn.style.pointerEvents = "none";
-            regBtn.style.opacity = "0.5";
-            regBtn.innerText = "COMING SOON";
+        if (now < openDate) {
+            submitBtn.disabled = true;
+            submitBtn.innerText = "COMING SOON";
+            submitBtn.style.opacity = "0.6";
+        } 
+        else if (now > closeDate) {
+            submitBtn.disabled = true;
+            submitBtn.innerText = "CLOSED";
+            submitBtn.style.background = "#444";
+        } 
+        else {
+            submitBtn.disabled = false;
+            submitBtn.innerText = "สมัคร";
         }
-        if (badge) badge.innerText = "COMING SOON";
-    } else if (now > closeDate) {
-        if (regBtn) {
-            regBtn.style.pointerEvents = "none";
-            regBtn.style.background = "#555";
-            regBtn.innerText = "CLOSED";
-        }
-        if (badge) badge.innerText = "CLOSED";
     }
-}
-<script>
-fetch("http://localhost/admin/content.json")
-.then(r=>r.json())
-.then(data=>{
- document.getElementById("title").innerText = data.title;
- document.getElementById("desc").innerText = data.desc;
- document.getElementById("announce").innerText = data.announce;
+
+    checkFormWindow();
+
+    /* ===== แสดงชื่อไฟล์ ===== */
+    fileInput.addEventListener('change', () => {
+        if (fileInput.files.length) {
+            fileNameText.innerText = fileInput.files[0].name;
+        }
+    });
+
+    /* ===== submit form ===== */
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        if (submitBtn.disabled) return;
+
+        submitBtn.innerText = "UPLOADING...";
+        submitBtn.disabled = true;
+
+        const file = fileInput.files[0];
+
+        if (!file) {
+            alert("กรุณาอัปโหลดรูปภาพ");
+            submitBtn.disabled = false;
+            submitBtn.innerText = "สมัคร";
+            return;
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = () => {
+            fetch(form.action, {
+                method: 'POST',
+                body: JSON.stringify({
+                    base64: reader.result.split(',')[1],
+                    type: file.type,
+                    name: file.name,
+                    fullname: form.fullname.value,
+                    nickname: form.nickname.value,
+                    student_id: form.student_id.value,
+                    contact: form.contact.value,
+                    reason: form.reason.value
+                })
+            })
+            .then(() => window.location = "success.html")
+            .catch(() => {
+                alert("เกิดข้อผิดพลาด ลองใหม่อีกครั้ง");
+                submitBtn.disabled = false;
+                submitBtn.innerText = "สมัคร";
+            });
+        };
+
+        reader.readAsDataURL(file);
+    });
+
 });
-</script>
-
-
-
