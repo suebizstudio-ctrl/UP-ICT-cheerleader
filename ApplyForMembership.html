@@ -2,121 +2,120 @@
 <html lang="th">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cheerleader Registration</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheerleader Registration</title>
 
-<link rel="shortcut icon" href="photo/logo2.png">
+    <link rel="shortcut icon" href="photo/logo2.png">
 
-<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="ApplyForMembership.css">
+    <link rel="stylesheet" href="ApplyForMembership.css">
 
 </head>
 
 <body>
 
-<div class="register-wrap">
+    <div class="register-wrap">
 
-<form
-action="https://script.google.com/macros/s/AKfycbxT3vcXxigxLRaVNQBGJDk0-3nQRDNeDrbynlEUnea3cerf60UMriNNwRTthxsbq1US/exec"
-method="POST"
-class="register-card"
-id="regForm">
+        <form
+            action="https://script.google.com/macros/s/AKfycbxT3vcXxigxLRaVNQBGJDk0-3nQRDNeDrbynlEUnea3cerf60UMriNNwRTthxsbq1US/exec"
+            method="POST" class="register-card" id="regForm">
 
-<img src="photo/IMG_5501.PNG" class="form-logo">
+            <img src="photo/IMG_5501.PNG" class="form-logo">
 
-<h1>ICT CHEERLEADER</h1>
-<p class="subtitle">Leadership Registration</p>
+            <h1>ICT CHEERLEADER</h1>
+            <p class="subtitle">Leadership Registration</p>
 
-<div class="grid">
+            <div class="grid">
 
-<input name="fullname" placeholder="Full Name" required>
-<input name="nickname" placeholder="Nickname" required>
+                <input name="fullname" placeholder="ชื่อจริง" required>
+                <input name="nickname" placeholder="ชื่อเล่น" required>
 
-<input name="student_id" placeholder="Student ID" required>
-<input name="contact" placeholder="Contact" required>
+                <input name="student_id" placeholder="รหัสนิสิต" required>
+                <input name="contact" placeholder="Instagram (IG)" required>
 
-</div>
+            </div>
 
-<textarea name="reason" placeholder="Why do you want to join?" required></textarea>
+            <textarea name="reason" placeholder="เหตุผลที่อยากเข้า" required></textarea>
 
-<label class="upload-box">
-<input type="file" id="photo" accept="image/*" required>
-<span id="fileName">Upload Portrait Photo</span>
-</label>
+            <label class="upload-box">
+                <input type="file" id="photo" accept="image/*" required>
+                <span id="fileName">อัปโหลดรูปภาพที่มั่นใจ เห็นหน้าชัดเจน</span>
+            </label>
 
-<button type="submit" id="submitBtn">SUBMIT APPLICATION</button>
+            <button type="submit" id="submitBtn">สมัคร</button>
 
-</form>
+        </form>
 
-</div>
+    </div>
 
-<script>
+    <script>
 
-const form = document.getElementById('regForm');
-const submitBtn = document.getElementById('submitBtn');
-const fileInput = document.getElementById('photo');
-const fileNameText = document.getElementById('fileName');
+        const form = document.getElementById('regForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const fileInput = document.getElementById('photo');
+        const fileNameText = document.getElementById('fileName');
 
-function checkFormWindow(){
+        function checkFormWindow() {
 
-const openDate = new Date('2026-01-1T09:00:00');
-const closeDate = new Date('2026-06-30T23:59:00');
-const now = new Date();
+            const openDate = new Date('2026-01-1T09:00:00');
+            const closeDate = new Date('2026-06-30T23:59:00');
+            const now = new Date();
 
-if(now < openDate){
-submitBtn.disabled = true;
-submitBtn.innerText = "COMING SOON";
-}
+            if (now < openDate) {
+                submitBtn.disabled = true;
+                submitBtn.innerText = "COMING SOON";
+            }
 
-if(now > closeDate){
-submitBtn.disabled = true;
-submitBtn.innerText = "CLOSED";
-}
+            if (now > closeDate) {
+                submitBtn.disabled = true;
+                submitBtn.innerText = "CLOSED";
+            }
 
-}
+        }
 
-window.onload = checkFormWindow;
+        window.onload = checkFormWindow;
 
-fileInput.addEventListener('change',()=>{
-if(fileInput.files.length){
-fileNameText.innerText = fileInput.files[0].name;
-}
-});
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length) {
+                fileNameText.innerText = fileInput.files[0].name;
+            }
+        });
 
-form.addEventListener('submit',e=>{
-e.preventDefault();
+        form.addEventListener('submit', e => {
+            e.preventDefault();
 
-submitBtn.innerText="UPLOADING...";
-submitBtn.disabled=true;
+            submitBtn.innerText = "UPLOADING...";
+            submitBtn.disabled = true;
 
-const file=fileInput.files[0];
-const reader=new FileReader();
+            const file = fileInput.files[0];
+            const reader = new FileReader();
 
-reader.onload=()=>{
+            reader.onload = () => {
 
-fetch(form.action,{
-method:'POST',
-body:JSON.stringify({
-base64:reader.result.split(',')[1],
-type:file.type,
-name:file.name,
-fullname:form.fullname.value,
-nickname:form.nickname.value,
-student_id:form.student_id.value,
-contact:form.contact.value,
-reason:form.reason.value
-})
-}).then(()=>window.location="success.html");
+                fetch(form.action, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        base64: reader.result.split(',')[1],
+                        type: file.type,
+                        name: file.name,
+                        fullname: form.fullname.value,
+                        nickname: form.nickname.value,
+                        student_id: form.student_id.value,
+                        contact: form.contact.value,
+                        reason: form.reason.value
+                    })
+                }).then(() => window.location = "success.html");
 
-};
+            };
 
-reader.readAsDataURL(file);
+            reader.readAsDataURL(file);
 
-});
+        });
 
-</script>
+    </script>
 
 </body>
+
 </html>
