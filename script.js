@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const fileNameText = document.getElementById('fileName');
 
     /* ===== เวลาเปิด-ปิด ===== */
-    const openDate = new Date('2026-01-01T09:00:00');
+    const openDate = new Date('2026-05-01T09:00:00');
     const closeDate = new Date('2026-06-30T23:59:00');
 
     function checkFormWindow() {
