@@ -21,7 +21,7 @@
     <link rel="shortcut icon" href="photo/logo2.png" sizes="32x32" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -63,7 +63,7 @@
 
         <!-- RECRUIT -->
         <div class="recruit-section">
-            <div class="recruit-wrap">
+            <div data-aos="fade-up" class="recruit-wrap">
                 <p class="recruit-label">
                     ผู้นำเชียร์คณะเทคโนโลยีสารสนเทศและการสื่อสาร
                 </p>
@@ -82,27 +82,29 @@
 
             <div class="activity-row">
 
-                <a href="Orientation.html" class="activity-card">
+                <a data-aos="zoom-in-up" href="Orientation.html" class="activity-card">
                     <img src="photo/IMG_2095.PNG">
                     <div class="activity-info">
                         <div class="activity-name">กิจกรรมปฐมนิเทศนิสิตใหม่</div>
-                        <div class="activity-desc">คณะเทคโนโลยีสารสนเทศและการสื่อสาร</div>
+                        <div class="activity-desc">
+                            กิจกรรมรับน้องสร้างสรรค์คณะICT<br>เพื่อเป็นกิจกรรมต้อนรับนิสิตชั้นปีที่หนึ่ง</div>
                     </div>
+
                 </a>
 
-                <a href="relationships.html" class="activity-card">
+                <a data-aos="zoom-in-up" href="relationships.html" class="activity-card">
                     <img src="photo/IMG_2094.PNG">
                     <div class="activity-info">
-                        <div class="activity-name">แลกหลีดสัมพันธ์</div>
+                        <div class="activity-name">กิจกรรมกระชับความสัมพันธ์<br>ระหว่างผู้นำเชียร์แต่ละคณะ</div>
                         <div class="activity-desc">สัปดาห์แห่งความมันส์และมิตรภาพที่เกิดขึ้น</div>
                     </div>
                 </a>
 
-                <a href="#" class="activity-card">
+                <a data-aos="zoom-in-up" href="#" class="activity-card">
                     <img src="photo/IMG_2097.PNG">
                     <div class="activity-info">
                         <div class="activity-name">FahMui Games</div>
-                        <div class="activity-desc">การแข่งขันและกิจกรรมภายใน</div>
+                        <div class="activity-desc">ฟ้ามุ่ยเกมการแข่งขันมหกรรมกีฬาประเภทผู้นำเชียร์</div>
                     </div>
                 </a>
 
@@ -114,11 +116,11 @@
             <p class="video-subtitle">การแข่งขันผู้นำเชียร์</p>
             <div class="video-wrap">
 
-                <div class="video-card">
+                <div data-aos="fade-up" data-aos-duration="3000" class="video-card">
                     <iframe src="https://www.youtube.com/embed/dNF-W99HcFg" allowfullscreen></iframe>
                 </div>
 
-                <div class="video-card">
+                <div data-aos="fade-up" data-aos-duration="3000" class="video-card">
                     <iframe src="https://www.youtube.com/embed/_aeyEhRJ1zA?start=121" allowfullscreen></iframe>
                 </div>
 
@@ -254,7 +256,10 @@
             </div>
 
         </footer>
-
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
 </body>
 
 </html>
