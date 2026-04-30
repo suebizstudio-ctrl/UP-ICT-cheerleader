@@ -1,184 +1,195 @@
 @import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Anuphan', sans-serif;
+/* ================= GLOBAL SETTINGS ================= */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Anuphan', sans-serif; 
 }
 
 body {
     min-height: 100vh;
-    background:
-        radial-gradient(circle at top, #7fd8ff30, transparent 60%),
-        linear-gradient(180deg, #0b0f1c, #050505);
     display: flex;
     justify-content: center;
     align-items: center;
+    /* พื้นหลังล้อตามหน้าสมัครเดิมแต่ปรับให้มืดลึกขึ้น */
+    background: 
+        radial-gradient(circle at top, #7fd8ff15, transparent 60%),
+        linear-gradient(180deg, #0b0f1c, #050505);
     color: white;
     overflow: hidden;
 }
 
 .page-wrap {
     width: 100%;
-    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-/* ================= CARD ================= */
+/* ================= SUCCESS BOX (Glassmorphism) ================= */
+.success-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    z-index: 10;
+}
 
 .success-box {
-    position: relative;
-    margin: auto;
-    max-width: 420px;
-    padding: 55px 40px;
-    border-radius: 28px;
-
-    background: linear-gradient(160deg,
-            rgba(255, 255, 255, .15),
-            rgba(255, 255, 255, .04));
-
-    backdrop-filter: blur(18px);
-    border: 1px solid rgba(255, 255, 255, .25);
-
-    box-shadow:
-        0 30px 70px rgba(0, 0, 0, .6),
-        0 0 40px rgba(120, 200, 255, .25);
-
-    animation: fadeUp 1s ease;
-    overflow: hidden;
-}
-
-/* glow aura */
-
-.success-box:before {
-    content: "";
-    position: absolute;
-    inset: -40px;
-    background:
-        radial-gradient(circle, #9fd8ff25, transparent 70%);
-    z-index: -1;
-}
-
-/* shimmer */
-
-.success-box:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -120%;
+    max-width: 480px;
     width: 100%;
-    height: 100%;
-    background: linear-gradient(120deg,
-            transparent,
-            rgba(255, 255, 255, .25),
-            transparent);
-    animation: shine 4s infinite;
+    padding: 60px 40px;
+    border-radius: 32px;
+    /* กระจกขุ่นที่ดูมีมิติและเงาที่ลึกกว่าหน้าสมัคร */
+    background: linear-gradient(160deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(127, 216, 255, 0.2);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+    text-align: center;
+    animation: fadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* ================= CONTENT ================= */
-
-.success-box img {
+/* ================= NO-CIRCLE CHECKMARK ANIMATION ================= */
+.checkmark-wrapper {
+    position: relative;
     width: 80px;
-    margin-bottom: 25px;
-    filter: drop-shadow(0 0 16px #7fd8ff);
+    height: 80px;
+    margin: 0 auto 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.success-box h1 {
-    letter-spacing: 4px;
-    font-weight: 400;
-    color: #9fd8ff;
-    margin-bottom: 15px;
+.checkmark-svg {
+    width: 60px;
+    height: 60px;
 }
 
-.success-box p {
-    font-size: 14px;
+.checkmark-path {
+    stroke: #7fd8ff; /* สีฟ้าเดียวกับหน้าสมัคร */
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 50;
+    stroke-dashoffset: 50;
+    filter: drop-shadow(0 0 10px rgba(127, 216, 255, 0.8));
+    animation: drawCheck 0.8s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+.success-glow {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #7fd8ff;
+    border-radius: 50%;
+    filter: blur(15px);
+    opacity: 0;
+    animation: burst 1s ease-out forwards;
+    animation-delay: 0.9s;
+}
+
+@keyframes drawCheck {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes burst {
+    0% { opacity: 0; transform: scale(1); }
+    50% { opacity: 0.7; }
+    100% { opacity: 0; transform: scale(12); }
+}
+
+/* ================= TYPOGRAPHY ================= */
+h1 {
+    font-size: 32px;
+    letter-spacing: 5px;
+    font-weight: 500;
+    background: linear-gradient(to bottom, #ffffff, #7fd8ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+.divider {
+    width: 40px;
+    height: 2px;
+    background: #7fd8ff;
+    margin: 0 auto 25px;
+    opacity: 0.4;
+}
+
+.success-desc {
+    font-weight: 300;
     line-height: 1.8;
-    opacity: .85;
-    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.7);
 }
 
-/* ================= BUTTON ================= */
+.success-desc b { color: #7fd8ff; font-weight: 400; }
+.success-desc span { 
+    font-size: 13px; 
+    display: block; 
+    margin-top: 10px; 
+    color: rgba(127, 216, 255, 0.5); 
+}
 
+/* ================= BUTTON (Action Style) ================= */
 .btn-back {
+    margin-top: 40px;
     display: inline-block;
-    padding: 13px 38px;
-    border-radius: 50px;
+    padding: 14px 35px;
+    color: #000;
+    /* ใช้สี Gradient ฟ้า-ม่วง เพื่อเชื่อมโยงมู้ดจากหน้าสมัครเดิม */
+    background: linear-gradient(135deg, #7fd8ff, #d8b4ff);
     text-decoration: none;
-    letter-spacing: 2px;
-    font-size: 12px;
-
-    border: 1px solid rgba(255, 255, 255, .3);
-    background: rgba(255, 255, 255, .08);
-    color: white;
-    backdrop-filter: blur(10px);
-
-    transition: .35s ease;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 20px rgba(127, 216, 255, 0.3);
 }
+
+.btn-back i { margin-right: 8px; }
 
 .btn-back:hover {
-    transform: translateY(-4px);
-    background: linear-gradient(135deg, #9fd8ff, #cdb4ff);
-    color: black;
-    box-shadow: 0 0 25px rgba(150, 220, 255, .6);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(150, 200, 255, 0.5);
+    filter: brightness(1.1);
 }
 
 /* ================= FOOTER ================= */
-
 .lux-footer {
-    margin-top: 40px;
-    opacity: .6;
+    position: absolute;
+    bottom: 30px;
+    text-align: center;
+    width: 100%;
 }
 
 .lux-footer img {
-    width: 50px;
-    margin-bottom: 8px;
-    filter: drop-shadow(0 0 8px #7fd8ff);
+    width: 45px;
+    margin-bottom: 15px;
+    opacity: 0.8;
+    filter: drop-shadow(0 0 5px rgba(127, 216, 255, 0.4));
 }
 
 .lux-copy {
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.2);
 }
 
 /* ================= ANIMATION ================= */
-
 @keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px) scale(.95);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+    from { opacity: 0; transform: translateY(30px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-@keyframes shine {
-    0% {
-        left: -120%
-    }
-
-    50% {
-        left: 120%
-    }
-
-    100% {
-        left: 120%
-    }
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:480px) {
-
-    .success-box {
-        padding: 45px 28px;
-    }
-
-    .success-box h1 {
-        font-size: 22px;
-        letter-spacing: 3px;
-    }
-
+/* Responsive */
+@media (max-width: 500px) {
+    .success-box { padding: 45px 25px; }
+    h1 { font-size: 28px; }
 }
