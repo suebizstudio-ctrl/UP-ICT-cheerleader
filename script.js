@@ -101,9 +101,6 @@ window.addEventListener("load", () => {
 
     }, 5000);
 });
-import Lenis from '@studio-freight/lenis'
-import { useEffect } from 'react'
-
 function App() {
   useEffect(() => {
     const lenis = new Lenis()
