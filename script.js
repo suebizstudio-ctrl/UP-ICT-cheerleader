@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const fileNameText = document.getElementById('fileName');
 
     /* ===== เวลาเปิด-ปิด ===== */
-    const openDate = new Date('2026-05-01T09:00:00');
-    const closeDate = new Date('2026-06-30T23:59:00');
+    const openDate = new Date('2026-06-30T09:00:00');
+    const closeDate = new Date('2026-07-30T23:59:00');
 
     function checkFormWindow() {
         const now = new Date();
@@ -100,4 +100,22 @@ window.addEventListener("load", () => {
         }, 1000);
 
     }, 5000);
+});
+import Lenis from '@studio-freight/lenis'
+import { useEffect } from 'react'
+
+function App() {
+  useEffect(() => {
+    const lenis = new Lenis()
+
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+  }, [])
+}
+document.querySelector('.card-container').addEventListener('click', function() {
+    this.classList.toggle('active');
 });
