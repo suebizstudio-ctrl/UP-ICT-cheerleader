@@ -882,143 +882,232 @@ body {
 }
 
 /*สมาชิก gen*/
-/* ======================
- ROYAL WALL GALLERY
-====================== */
+/* ================= GLOBAL SETTINGS (ใส่เผื่อไว้ถ้ายังไม่มี) ================= */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    background: #050505;
+    color: white;
+}
+
+/* ================= MEMBER SECTION ================= */
+/* ================= GLOBAL & LAYOUT ================= */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Anuphan', sans-serif;
+}
 
 .member-section {
-    padding: clamp(70px, 8vw, 130px) clamp(18px, 6vw, 120px);
-    background:
-        radial-gradient(circle at top, #7fd8ff22, transparent 60%),
-        linear-gradient(180deg, #05080f, #020202);
-}
-
-/* TITLE */
-
-.member-title {
+    background-color: #050505;
+    padding: 60px 15px;
     text-align: center;
-    font-size: clamp(24px, 3vw, 40px);
-    letter-spacing: 6px;
-    margin-bottom: 70px;
-
-    background: linear-gradient(135deg, #9fd8ff, #d4af37, #fff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    filter: drop-shadow(0 0 25px rgba(212, 175, 55, .5));
+    color: white;
+}
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@200;300&display=swap');
+.member-title {
+    /* ใช้ฟอนต์ Serif ที่ดูแพงและคลาสสิก */
+    font-family: 'Cormorant Garamond', serif; 
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 300;
+    text-transform: uppercase;
+    
+    /* ระยะห่างคือคีย์สำคัญของความโก้ */
+    letter-spacing: 0.35em; 
+    
+    /* สีทองแบบ "Champagne Gold" (ไม่เหลืองจนลิเก) */
+    color: #c5a059; 
+    
+    text-align: center;
+    margin-bottom: 100px;
+    position: relative;
+    padding-bottom: 20px;
 }
 
-/* GEN BLOCK */
+/* เส้นขีดด้านล่างแบบ Minimalist บางเฉียบ */
+.member-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px; /* เส้นสั้นๆ บางๆ ดูตั้งใจและประณีต */
+    height: 1px;
+    background-color: #c5a059;
+    opacity: 0.6;
+}
+/* ================= GRID SYSTEM (หัวใจสำคัญของการปรับจอ) ================= */
+.member-track, .member-grid {
+    display: grid;
+    /* จอมือถือ (เริ่มต้น): 2 คอลัมน์ */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+}
 
+/* สำหรับ Gen ที่มีคนเดียว ให้วางกลางและขนาดไม่ใหญ่ */
+.member-grid.one {
+    display: flex;
+    justify-content: center;
+}
 .gen-block {
-    margin-bottom: 90px;
+    margin-bottom: 120px; /* เพิ่มระยะห่างระหว่างรุ่นให้ดูโปร่ง */
 }
 
 .gen-block h3 {
-    text-align: center;
-    letter-spacing: 5px;
+    font-family: 'Montserrat', sans-serif; /* หรือฟอนต์ Sans-serif บางๆ */
+    font-size: 13px; /* ขนาดเล็กลงแต่ชัดเจน */
     font-weight: 300;
-    margin-bottom: 35px;
-    color: #d4af37;
+    text-transform: uppercase;
+    letter-spacing: 0.8em; /* ยืดระยะห่างตัวอักษรให้ดู High-end */
+    color: rgba(197, 160, 89, 0.8); /* สีทองแชมเปญจางๆ */
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px; /* ระยะห่างระหว่างเส้นกับตัวอักษร */
+    
+    margin-bottom: 60px; /* ระยะห่างจากหัวข้อลงไปหารูปภาพ */
 }
 
-/* WALL GRID */
+/* เพิ่มเส้นสายบางๆ ด้านข้างเพื่อสร้างสมดุล (Symmetry) */
+.gen-block h3::before,
+.gen-block h3::after {
+    content: "";
+    width: 60px; /* ความยาวเส้น */
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(197, 160, 89, 0.4), transparent);
+}
+/* ================= RESPONSIVE ADJUSTMENTS ================= */
 
-.member-track,
-.member-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 10px;
+/* จอ iPad / Tablet (768px ขึ้นไป) */
+@media (min-width: 768px) {
+    .member-track, .member-grid {
+        grid-template-columns: repeat(3, 1fr); /* ปรับเป็น 3 คอลัมน์ */
+        gap: 20px;
+    }
 }
 
-/* SINGLE CENTER */
-
-.member-grid.one {
-    grid-template-columns: 1fr;
-    justify-items: center;
+/* จอ Laptop / Desktop (1024px ขึ้นไป) */
+@media (min-width: 1024px) {
+    .member-track, .member-grid {
+        grid-template-columns: repeat(4, 1fr); /* ปรับเป็น 4 คอลัมน์ */
+        gap: 25px;
+    }
 }
 
-/* CARD */
-
+/* ================= MEMBER CARD (ขนาดรูปไม่ใหญ่) ================= */
 .member-card {
-    width: 100%;
-    max-width: 220px;
-    aspect-ratio: 1/1;
-    overflow: hidden;
-    background: black;
     position: relative;
+    width: 100%; /* ปรับตามขนาด Grid */
+    max-width: 220px; /* คุมขนาดสูงสุดไม่ให้ใหญ่เกินไป */
+    aspect-ratio: 3/4.2; /* สัดส่วนแนวตั้งสวยๆ */
+    margin: 0 auto; /* จัดกลางในช่อง Grid */
+    background: #111;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
 }
-
-/* IMAGE */
 
 .member-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: .6s ease;
+    transition: 0.5s ease;
 }
 
-/* GOLD FRAME */
+/* ================= HOVER & TOUCH SYSTEM (HIGH-END REWRITE) ================= */
 
-.member-card:before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border: 1px solid rgba(212, 175, 55, .45);
-    opacity: 0;
-    transition: .5s;
-}
-
-/* HOVER */
-
-.member-card:hover img {
-    filter: grayscale(0%) brightness(1.1);
-    transform: scale(1.05);
-}
-
-.member-card:hover:before {
-    opacity: 1;
-}
-
-.member-card:hover {
-    box-shadow: 0 0 20px rgba(212, 175, 55, .4);
-}
-
-.member-card a {
-    display: block;
+/* 1. การจัดการพื้นฐานของการ์ด */
+.member-card {
+    position: relative;
+    overflow: hidden;
     cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.member-card:hover {
-    transform: translateY(-4px);
-    transition: .4s;
+/* ซ่อนตัว Checkbox (Invisible Toggle) */
+.card-toggle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 30;
+    cursor: pointer;
+    margin: 0;
+    display: none; /* เริ่มต้นซ่อนไว้ก่อน */
 }
 
+/* 2. การจัดการข้อมูลสมาชิก (จัดตำแหน่งไม่ให้ทับกัน) */
+.member-name, .member-nickname, .info-divider, .member-faculty, .member-major {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    padding: 0 15px;
+    pointer-events: none;
+    text-align: center;
+}
 
-/* MOBILE */
+/* ตั้งค่าระยะห่าง (Bottom) ใหม่ทั้งหมดเพื่อแก้ปัญหาเลเยอร์ทับกัน */
+.member-major { bottom: 25px; font-size: 10px; line-height: 1.3; color: #d4af37; }
+.member-faculty { bottom: 55px; font-size: 10px; line-height: 1.3; color: #ccc; }
+.info-divider { bottom: 85px; height: 1px; width: 30px; background: #d4af37; margin: 0 auto; }
+.member-name { bottom: 95px; font-size: 12px; color: #fcf6ba; font-weight: 500; }
+.member-nickname { bottom: 125px; font-size: 14px; color: #fff; }
 
-@media(max-width:768px) {
-
-    .member-track,
-    .member-grid {
-        grid-template-columns: repeat(3, 1fr);
+/* 3. [Desktop Only] สำหรับคอมพิวเตอร์: ใช้การเลื่อนเมาส์ (Hover) */
+@media (min-width: 1025px) {
+    .member-card:hover .member-img {
+        filter: brightness(0.2) blur(3px);
+        transform: scale(1.08);
     }
-
-    .member-card {
-        max-width: none;
+    .member-card:hover .member-name, 
+    .member-card:hover .member-nickname, 
+    .member-card:hover .info-divider, 
+    .member-card:hover .member-faculty, 
+    .member-card:hover .member-major {
+        opacity: 1;
+        transform: translateY(0);
     }
-
 }
 
-@media(max-width:480px) {
-
-    .member-track,
-    .member-grid {
-        grid-template-columns: repeat(2, 1fr);
+/* 4. [Touch Only] สำหรับโทรศัพท์และไอแพด: ใช้การกด (Tap) */
+@media (max-width: 1024px) {
+    .card-toggle {
+        display: block; /* แสดง Checkbox เฉพาะในมือถือเพื่อใช้รับแรงกด */
     }
-
+    
+    .card-toggle:checked ~ .member-img {
+        filter: brightness(0.2) blur(3px);
+        transform: scale(1.08);
+    }
+    
+    .card-toggle:checked ~ .member-name, 
+    .card-toggle:checked ~ .member-nickname, 
+    .card-toggle:checked ~ .info-divider, 
+    .card-toggle:checked ~ .member-faculty, 
+    .card-toggle:checked ~ .member-major {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
-
 /* =====================
    FOOTER
 ===================== */
