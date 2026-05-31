@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const recruitBtn = document.getElementById('recruitSubmitBtn');
     
     /* ===== ตั้งค่าเวลาเปิด-ปิด ===== */
-    const openDate = new Date('2026-06-01T09:00:00');
+    const openDate = new Date('2026-05-31T09:00:00');
     const closeDate = new Date('2026-06-30T23:59:00');
 
     function checkFormWindow() {
