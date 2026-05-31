@@ -116,3 +116,21 @@ window.addEventListener("load", () => {
         }, 1000);
     }, 5000);
 });
+
+// ฟังก์ชันเปิดหน้าต่างขยายรูป QR Code
+function openLightbox() {
+    const lightbox = document.getElementById('qr-lightbox');
+    if (lightbox) {
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden'; // ล็อคหน้าจอไม่ให้เลื่อนเบื้องหลัง
+    }
+}
+
+// ฟังก์ชันปิดหน้าต่างขยายรูป QR Code
+function closeLightbox() {
+    const lightbox = document.getElementById('qr-lightbox');
+    if (lightbox) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = ''; // คืนค่าการเลื่อนหน้าจอปกติ
+    }
+}
