@@ -6,31 +6,50 @@
     <title>สมัครสำเร็จ | ICT CHEERLEADER UP</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- favicon -->
     <link rel="shortcut icon" href="photo/logo2.png" type="image/x-icon">
-
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <!-- CSS -->
     <link rel="stylesheet" href="success.css">
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const bgOverlay = document.querySelector('.bg-overlay');
+            const starCount = 35; // จำนวนเม็ดละอองดาวสีทองในหน้าสำเร็จ
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'success-star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 4 + 's';
+                
+                // สุ่มดีไซน์ให้ดาวบางดวงเป็นสีทองฟรุ่งฟริ้งสลับฟ้า
+                if (Math.random() > 0.5) {
+                    star.classList.add('gold-star');
+                }
+
+                const size = Math.random() * 3 + 1.5;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                
+                bgOverlay.appendChild(star);
+            }
+        });
+    </script>
 </head>
 
 <body>
 
     <div class="page-wrap">
-        <!-- เลเยอร์พื้นหลังเพิ่มเติมสำหรับเอฟเฟกต์แสง -->
         <div class="bg-overlay"></div>
 
         <div class="success-container">
             <div class="success-box">
 
-                <!-- เครื่องหมายถูกแบบ SVG Path Animation -->
                 <div class="checkmark-wrapper">
                     <svg class="checkmark-svg" viewBox="0 0 52 52">
                         <path class="checkmark-path" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
                     </svg>
-                    <!-- แสงระเบิด (Burst) เมื่อวาดเสร็จ -->
                     <div class="success-glow"></div>
                 </div>
 
@@ -42,7 +61,20 @@
                     ข้อมูลของคุณถูกส่งเข้าสู่ระบบ <b>ICT Cheerleader</b> เรียบร้อยแล้ว <br>
                     <span>เตรียมตัวให้พร้อมสำหรับบททดสอบถัดไป</span>
                 </p>
+                
+                <div class="line-group-wrap">
+                    <p class="join-label">เข้าร่วมกลุ่มเพื่อรับข่าวสารและนัดหมาย</p>
+                    
+                    <div class="qr-container">
+                        <img src="photo/group_invite_QR_code_17775504667517603830564915758833.jpg" alt="ICT CL 16 QR Code" class="qr-image">
+                    </div>
 
+                    <a href="https://line.me/ti/g2/ilVVvW5CwUklpKsaT7v0-Lx3xvp4bA9zgliF5Q?utm_source=invitation&utm_medium=link_copy&utm_campaign=default"
+                        target="_blank" class="btn-line">
+                        <i class="fa-brands fa-line"></i> เข้ากลุ่ม ICT CL 16👑
+                    </a>
+                </div>
+                
                 <div class="action-wrap">
                     <a href="index.html" class="btn-back">
                         <i class="fa-solid fa-house"></i> กลับสู่หน้าหลัก
@@ -52,7 +84,6 @@
         </div>
 
         <footer class="lux-footer">
-            <!-- โลโก้คณะที่ปรับให้เข้ากับธีมเข้ม -->
             <img src="photo/IMG_5501.PNG" alt="ICT Logo">
             <div class="lux-copy">
                 © 2026 ICT CHEERLEADER UP · All Systems Ready
