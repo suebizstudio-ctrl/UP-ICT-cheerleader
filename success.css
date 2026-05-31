@@ -8,89 +8,103 @@
     font-family: 'Anuphan', sans-serif; 
 }
 
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* พื้นหลังล้อตามหน้าสมัครเดิมแต่ปรับให้มืดลึกขึ้น */
     background: 
         radial-gradient(circle at top, #7fd8ff15, transparent 60%),
         linear-gradient(180deg, #0b0f1c, #050505);
     color: white;
-    overflow: hidden;
 }
 
 .page-wrap {
     width: 100%;
+    padding: 40px 20px 100px; /* เพิ่ม Padding กันบอร์ดเบียด Footer บนมือถือ */
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    min-height: 100vh;
 }
 
-/* ================= SUCCESS BOX (Glassmorphism) ================= */
+/* เลเยอร์พื้นหลังเอฟเฟกต์แสง และละอองดาว */
+.bg-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ================= SUCCESS BOX (Responsive Glassmorphism) ================= */
 .success-container {
     width: 100%;
+    max-width: 480px;
     display: flex;
     justify-content: center;
-    padding: 20px;
     z-index: 10;
 }
 
 .success-box {
-    max-width: 480px;
     width: 100%;
-    padding: 60px 40px;
-    border-radius: 32px;
-    /* กระจกขุ่นที่ดูมีมิติและเงาที่ลึกกว่าหน้าสมัคร */
-    background: linear-gradient(160deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+    padding: 40px 30px;
+    border-radius: 28px;
+    background: linear-gradient(160deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(127, 216, 255, 0.2);
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(127, 216, 255, 0.15);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
     text-align: center;
-    animation: fadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* ================= NO-CIRCLE CHECKMARK ANIMATION ================= */
+/* ================= CHECKMARK ANIMATION ================= */
 .checkmark-wrapper {
     position: relative;
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 30px;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .checkmark-svg {
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
 }
 
 .checkmark-path {
-    stroke: #7fd8ff; /* สีฟ้าเดียวกับหน้าสมัคร */
-    stroke-width: 6;
+    stroke: #7fd8ff;
+    stroke-width: 5;
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-dasharray: 50;
     stroke-dashoffset: 50;
-    filter: drop-shadow(0 0 10px rgba(127, 216, 255, 0.8));
+    filter: drop-shadow(0 0 8px rgba(127, 216, 255, 0.6));
     animation: drawCheck 0.8s ease-out forwards;
-    animation-delay: 0.5s;
+    animation-delay: 0.3s;
 }
 
 .success-glow {
     position: absolute;
-    width: 10px;
-    height: 10px;
-    background: #7fd8ff;
-    border-radius: 50%;
-    filter: blur(15px);
+    inset: 0;
+    background: radial-gradient(circle, rgba(127, 216, 255, 0.3) 0%, transparent 70%);
     opacity: 0;
-    animation: burst 1s ease-out forwards;
-    animation-delay: 0.9s;
+    transform: scale(0.5);
+    animation: burst 1.2s ease-out forwards;
+    animation-delay: 0.7s;
 }
 
 @keyframes drawCheck {
@@ -98,98 +112,222 @@ body {
 }
 
 @keyframes burst {
-    0% { opacity: 0; transform: scale(1); }
-    50% { opacity: 0.7; }
-    100% { opacity: 0; transform: scale(12); }
+    0% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; }
+    100% { opacity: 0; transform: scale(1.8); }
 }
 
 /* ================= TYPOGRAPHY ================= */
 h1 {
-    font-size: 32px;
-    letter-spacing: 5px;
+    font-size: 28px;
+    letter-spacing: 4px;
     font-weight: 500;
     background: linear-gradient(to bottom, #ffffff, #7fd8ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .divider {
     width: 40px;
     height: 2px;
     background: #7fd8ff;
-    margin: 0 auto 25px;
-    opacity: 0.4;
+    margin: 0 auto 20px;
+    opacity: 0.3;
 }
 
 .success-desc {
+    font-size: 14px;
     font-weight: 300;
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.75);
 }
 
 .success-desc b { color: #7fd8ff; font-weight: 400; }
 .success-desc span { 
-    font-size: 13px; 
+    font-size: 12px; 
     display: block; 
-    margin-top: 10px; 
+    margin-top: 6px; 
     color: rgba(127, 216, 255, 0.5); 
 }
 
-/* ================= BUTTON (Action Style) ================= */
-.btn-back {
-    margin-top: 40px;
-    display: inline-block;
-    padding: 14px 35px;
-    color: #000;
-    /* ใช้สี Gradient ฟ้า-ม่วง เพื่อเชื่อมโยงมู้ดจากหน้าสมัครเดิม */
-    background: linear-gradient(135deg, #7fd8ff, #d8b4ff);
-    text-decoration: none;
-    border-radius: 50px;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 10px 20px rgba(127, 216, 255, 0.3);
+/* ================= LINE GROUP SECTION ================= */
+.line-group-wrap {
+    margin: 25px auto 0;
+    padding-top: 25px;
+    border-top: 1px solid rgba(127, 216, 255, 0.1);
+    width: 100%;
+    max-width: 340px;
 }
 
-.btn-back i { margin-right: 8px; }
+.join-label {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 15px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+/* กรอบ QR Code สัดส่วนยืดหยุ่นตามหน้าจอ */
+.qr-container {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 20px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 18px;
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.qr-container:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+}
+
+.qr-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+/* ปุ่ม LINE */
+.btn-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 12px;
+    background: rgba(0, 185, 0, 0.08);
+    border: 1px solid rgba(0, 185, 0, 0.3);
+    color: #00ff88;
+    text-decoration: none;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-line:hover {
+    background: #00b900;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(0, 185, 0, 0.3);
+}
+
+.btn-line i { font-size: 18px; }
+
+/* ================= ACTION BUTTONS ================= */
+.action-wrap {
+    margin-top: 20px;
+}
+
+.btn-back {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    opacity: 0.65;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    font-size: 12px;
+    padding: 8px 24px;
+    border-radius: 50px;
+}
+
+.btn-back i { margin-right: 6px; }
 
 .btn-back:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(150, 200, 255, 0.5);
-    filter: brightness(1.1);
+    opacity: 1;
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.4);
 }
 
 /* ================= FOOTER ================= */
 .lux-footer {
     position: absolute;
-    bottom: 30px;
+    bottom: 25px;
     text-align: center;
     width: 100%;
+    left: 0;
+    z-index: 5;
 }
 
 .lux-footer img {
-    width: 45px;
-    margin-bottom: 15px;
-    opacity: 0.8;
-    filter: drop-shadow(0 0 5px rgba(127, 216, 255, 0.4));
+    width: 40px;
+    margin-bottom: 8px;
+    opacity: 0.7;
+    filter: drop-shadow(0 0 5px rgba(127, 216, 255, 0.3));
 }
 
 .lux-copy {
     font-size: 10px;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     color: rgba(255, 255, 255, 0.2);
 }
 
-/* ================= ANIMATION ================= */
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px) scale(0.95); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
+/* ================= MAGIC STARS ANIMATION ================= */
+.success-star {
+    position: absolute;
+    background: #7fd8ff;
+    border-radius: 50%;
+    box-shadow: 0 0 6px #7fd8ff;
+    opacity: 0;
+    animation: success-sparkle-float 6s infinite ease-in-out;
 }
 
-/* Responsive */
-@media (max-width: 500px) {
-    .success-box { padding: 45px 25px; }
-    h1 { font-size: 28px; }
+.success-star.gold-star {
+    background: #d4af37;
+    box-shadow: 0 0 6px #d4af37;
+}
+
+@keyframes success-sparkle-float {
+    0% { transform: translateY(105vh) scale(0.5); opacity: 0; }
+    20% { opacity: 0.6; }
+    80% { opacity: 0.4; }
+    100% { transform: translateY(-5vh) scale(1); opacity: 0; }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= RESPONSIVE (Breakpoints) ================= */
+
+/* จอแท็บเล็ต / ไอแพด (iPad Pro, iPad Air) */
+@media (max-width: 768px) {
+    .success-box {
+        padding: 35px 25px;
+    }
+}
+
+/* จอมือถือทุกขนาด (iPhone, Samsung) */
+@media (max-width: 480px) {
+    .page-wrap {
+        padding: 20px 15px 90px;
+    }
+    .success-box {
+        padding: 30px 20px;
+        border-radius: 24px;
+    }
+    h1 {
+        font-size: 24px;
+        letter-spacing: 3px;
+    }
+    .success-desc {
+        font-size: 13px;
+    }
+    .qr-container {
+        width: 145px;
+        height: 145px;
+    }
+    .btn-line {
+        font-size: 13px;
+        padding: 11px;
+    }
 }
