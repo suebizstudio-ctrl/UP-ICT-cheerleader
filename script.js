@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const reader = new FileReader();
             reader.onload = () => {
-                fetch(form.action, {
+                fetch("https://script.google.com/macros/s/AKfycbxT3vcXxigxLRaVNQBGJDk0-3nQRDNeDrbynlEUnea3cerf60UMriNNwRTthxsbq1US/exec", {
                     method: 'POST',
                     body: JSON.stringify({
                         base64: reader.result.split(',')[1],
