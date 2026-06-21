@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     /* ===== ตั้งค่าเวลาเปิด-ปิด ===== */
     const openDate = new Date('2026-05-31T09:00:00');
-    const closeDate = new Date('2026-06-30T23:59:00');
+    const closeDate = new Date('2026-06-31T23:59:00');
 
     function checkFormWindow() {
         if (!recruitBtn) return; // ถ้าไม่เจอไอดีนี้ (เช่น อยู่หน้าอื่น) ให้ข้ามไป
